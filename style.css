@@ -1,0 +1,10 @@
+.font-Cookie{
+    font-family: 'Cookie';
+}
+
+#pngSfondo{
+    position: absolute;
+    color: #323232;
+    font-size: 40rem;
+    z-index:-10;
+}

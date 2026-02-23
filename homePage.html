@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>HTML</title>
+  
+  <link rel="stylesheet" href="style.css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-[#303030] m-0 p-0 overflow-hidden">
+  
+  <i id="pngSfondo" class="fa-regular fa-credit-card"></i>
+  
+  <!--Section per la pagina di login.
+  sarà ovviamente una pagina placeholder in quanto non so fare un login vero.-->
+  <section id="paginaLogin" class="h-screen w-full flex flex-col items-center justify-center m-0 p-0">
+    
+    <h1 id="financialDashboard" class="text-8xl font-Cookie text-[#A3FFE3]/50 scale-75 opacity-0 transition-all duration-1000">NUMERA</h1>
+    <p id="slogan" class="text-4xl font-Cookie text-[#9810F1]/50 mb-40 opacity-0 scale-75 transition-all duration-1000 delay-500">Tracking Made Simple</p>
+    
+    <div id="loginCard" class="card bg-[#9810F1]/25 shadow-lg w-[90%] max-w-md p-8 rounded-2xl backdrop-blur-xl translate-y-8 scale-95 opacity-0 transition-all duration-1000 delay-[2s]">
+      
+      <h1 class="text-3xl font-medium text-[#C3C3C3] mb-4">Login</h1>
+      
+      <form id="loginForm" class="form login flex flex-col">
+        
+        <input type="text" class="rounded m-2 bg-[#9810F1]/15" placeholder="Utente" required>
+        <input type="password" class="rounded m-2 bg-[#9810F1]/15" placeholder="password" required>
+        
+        <button type="submit" id="bottoneLogin" class=" bg-gray-900/10 rounded-xl border border-[#303030] text-[#C3C3C3] m-2 self-end text-lg font-light p-1">Invia</button>
+        
+      </form>
+      
+    </div>
+  </section>
+  
+  <!--La parte principale la vera dashboard con tutti le sezioni che servono-->
+  <main id="paginaPrincipale" class="hidden bg-purple-900">
+  </main>
+  
+  <script src="main.js"></script>
+</body>
+</html>
