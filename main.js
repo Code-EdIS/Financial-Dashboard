@@ -1,3 +1,7 @@
+import { supabase } from "./modules/supabaseClient.js"
+
+import * as funzioni from "./modules/api.js"
+
 //blocco animazioni
 const titolo = document.getElementById("financialDashboard");
 const slogan = document.getElementById("slogan");
@@ -10,13 +14,45 @@ window.addEventListener("load", () => {
 })
 
 //blocco funzione login con dichiarazioni e funzione
-const pulsLogin = document.getElementById("bottoneLogin");
+const form = document.getElementById("loginForm");
 
-const form = document.getElementById("loginForm")
+const cardConto = document.getElementById("cardTotale");
 
-form.addEventListener("submit", (e) => {
+const cardTrans = document.getElementById("cardTransizioni");
+
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
   
-  document.getElementById("paginaLogin").classList.add("hidden");
-  document.getElementById("paginaPrincipale").classList.remove("hidden");
+  const { data: {session}} = await supabase.auth.getSession();
+  
+  if(session){
+    document.getElementById("paginaLogin").classList.add("hidden");
+    
+    document.getElementById("paginaPrincipale").classList.remove("hidden");
+  
+    cardConto.offsetHeight;
+    cardTrans.offsetHeight;
+  
+      cardConto.classList.remove("opacity-0", "scale-75");
+      cardTrans.classList.remove("translate-y-8", "scale-95", "opacity-0");
+  }else{
+    const mail = form.querySelector("input[type='email']").value;
+    const password = form.querySelector("input[type='password']").value;
+    
+    const res = await funzioni.loginUser(mail, password);
+    
+    if(res.success){
+      document.getElementById("paginaLogin").classList.add("hidden");
+    
+    document.getElementById("paginaPrincipale").classList.remove("hidden");
+  
+    cardConto.offsetHeight;
+    cardTrans.offsetHeight;
+  
+      cardConto.classList.remove("opacity-0", "scale-75");
+      cardTrans.classList.remove("translate-y-8", "scale-95", "opacity-0");
+    }else{
+      alert(res.message);
+    }
+  }
 });

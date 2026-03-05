@@ -34,7 +34,7 @@
       
       <form id="loginForm" class="form login flex flex-col">
         
-        <input type="text" class="rounded m-2 bg-[#D1B045]/15" placeholder="Utente" required>
+        <input type="email" class="rounded m-2 bg-[#D1B045]/15" placeholder="Utente" required>
         <input type="password" class="rounded m-2 bg-[#D1B045]/15" placeholder="password" required>
         
         <button type="submit" id="bottoneLogin" class=" bg-gray-900/10 rounded-xl border border-[#303030] text-[#C3C3C3] m-2 self-end text-lg font-light p-1">Invia</button>
@@ -45,9 +45,29 @@
   </section>
   
   <!--La parte principale la vera dashboard con tutti le sezioni che servono-->
-  <main id="paginaPrincipale" class="hidden bg-purple-900">
+  <main id="paginaPrincipale" class="hidden h-screen w-full">
+    <div id="barraUtility" class=" bg-black h-10 flex flex-row items-center justify-between">
+      <i id="Icon" class="text-white fa-regular fa-credit-card ml-3 text-2xl"></i>
+      <h1 id="logout" class="text-[#F4F8F9] text-2xl mr-3">Esci</h1>
+    </div>
+    
+    <section id="cardTotale" class="border border-white/10 bg-white/5 rounded-3xl shadow-2xl backdrop-blur-lg w-[90%] max-w-md m-auto mt-12 p-4 opacity-0 scale-75 transition-all duration-1000 delay-100">
+      <p id="ctaSaldo" class="text-2xl text-[#F4F8F9]">Il tuo saldo attuale:</p>
+      <h1 id="deposito" class="text-4xl text-[#F4F8F9] m-4"><span id="aggiorna" class="text-7xl md:text-8xl">0.00</span>€</h1>
+    </section>
+    
+    <section id="cardTransizioni" class=" flex flex-col border border-white/10 bg-white/5 rounded-3xl shadow-2xl backdrop-blur-lg w-[90%] max-w-md min-h-40 m-auto mt-20 translate-y-8 scale-95 opacity-0 transition-all duration-1000 delay-1000">
+      <article id="movimentiAdd" class="flex items-center justify-between border-b border-white/5 w-full p-4 max-h-4">
+      <h1 class="text-[#F4F8F9]">I tuoi movimenti</h1>
+      <button id="addMovimento" class="text-[#F4F8F9] text-3xl focus:scale-105 hover:scale-105 active:scale-95 transition-transform duration-300 ease-out">+</button>
+      </article>
+      <article id="listaMovimenti" class=" flex-1 p-1 m-1 border border-white/5 rounded-3xl">
+        
+      </article>
+    </section>
   </main>
   
-  <script src="main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script type="module" src="main.js"></script>
 </body>
 </html>
