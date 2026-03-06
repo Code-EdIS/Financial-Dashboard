@@ -20,13 +20,8 @@ const cardConto = document.getElementById("cardTotale");
 
 const cardTrans = document.getElementById("cardTransizioni");
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  
-  const { data: {session}} = await supabase.auth.getSession();
-  
-  if(session){
-    document.getElementById("paginaLogin").classList.add("hidden");
+function mostraDashboard(){
+  document.getElementById("paginaLogin").classList.add("hidden");
     
     document.getElementById("paginaPrincipale").classList.remove("hidden");
   
@@ -35,6 +30,15 @@ form.addEventListener("submit", async (e) => {
   
       cardConto.classList.remove("opacity-0", "scale-75");
       cardTrans.classList.remove("translate-y-8", "scale-95", "opacity-0");
+}
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  
+  const { data: {session}} = await supabase.auth.getSession();
+  
+  if(session){
+    mostraDashboard();
   }else{
     const mail = form.querySelector("input[type='email']").value;
     const password = form.querySelector("input[type='password']").value;
@@ -42,15 +46,7 @@ form.addEventListener("submit", async (e) => {
     const res = await funzioni.loginUser(mail, password);
     
     if(res.success){
-      document.getElementById("paginaLogin").classList.add("hidden");
-    
-    document.getElementById("paginaPrincipale").classList.remove("hidden");
-  
-    cardConto.offsetHeight;
-    cardTrans.offsetHeight;
-  
-      cardConto.classList.remove("opacity-0", "scale-75");
-      cardTrans.classList.remove("translate-y-8", "scale-95", "opacity-0");
+      mostraDashboard();
     }else{
       alert(res.message);
     }
